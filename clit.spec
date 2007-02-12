@@ -1,6 +1,6 @@
 %define xver %(echo %{version} | tr -d .)
 Summary:	Open Convert-.LIT tool
-Summary(pl.UTF-8):   Otwarte narzędzie do rozpakowywania plików .LIT
+Summary(pl.UTF-8):	Otwarte narzędzie do rozpakowywania plików .LIT
 Name:		clit
 Version:	1.8
 Release:	1
