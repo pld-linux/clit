@@ -1,6 +1,6 @@
 %define xver %(echo %{version} | tr -d .)
 Summary:	Open Convert-.LIT tool
-Summary(pl):	Otwarte narzêdzie do rozpakowywania plików .LIT
+Summary(pl.UTF-8):   Otwarte narzÄ™dzie do rozpakowywania plikÃ³w .LIT
 Name:		clit
 Version:	1.8
 Release:	1
@@ -18,10 +18,10 @@ clit allows extracting "DRM1" format .LIT files into their original
 XML/HTML. IANAL but using this program may violate DMCA if you're in
 USA.
 
-%description -l pl
-clit pozwala na rozpakowywanie plików w formacie .LIT/DRM1. U¿ywanie
-tego programu na terenie Stanów Zjednoczonych Ameryki Pó³nocnej mo¿e
-byæ pogwa³ceniem DMCA.
+%description -l pl.UTF-8
+clit pozwala na rozpakowywanie plikÃ³w w formacie .LIT/DRM1. UÅ¼ywanie
+tego programu na terenie StanÃ³w Zjednoczonych Ameryki PÃ³Å‚nocnej moÅ¼e
+byÄ‡ pogwaÅ‚ceniem DMCA.
 
 %prep
 %setup -q -c
