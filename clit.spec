@@ -3,7 +3,7 @@ Summary:	Open Convert-.LIT tool
 Summary(pl.UTF-8):	Otwarte narzędzie do rozpakowywania plików .LIT
 Name:		clit
 Version:	1.8
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		Applications/Archiving
 Source0:	http://www.kyz.uklinux.net/downloads/open_c-lit-%{version}.tar.gz
