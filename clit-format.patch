@@ -1,0 +1,14 @@
+--- clit-1.8/clit18/clit.c.orig	2004-07-04 17:20:12.000000000 +0200
++++ clit-1.8/clit18/clit.c	2016-09-01 18:15:22.946863883 +0200
+@@ -125,9 +125,9 @@
+             dir_program[i+1] = '\0'; break;
+         }
+     }
+-    printf(sTitle);
++    fputs(sTitle, stdout);
+     if (argc < 3) { 
+-        printf(sUsage);
++        fputs(sUsage, stdout);
+         return -1;
+     }
+     base = 1;

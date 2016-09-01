@@ -3,11 +3,12 @@ Summary:	Open Convert-.LIT tool
 Summary(pl.UTF-8):	Otwarte narzędzie do rozpakowywania plików .LIT
 Name:		clit
 Version:	1.8
-Release:	2
+Release:	3
 License:	GPL v2+
 Group:		Applications/Archiving
 Source0:	http://www.kyz.uklinux.net/downloads/open_c-lit-%{version}.tar.gz
 # Source0-md5:	d8c599cf0e3cd8bab08e455e51ef852d
+Patch0:		%{name}-format.patch
 URL:		http://www.kyz.uklinux.net/convlit.php
 BuildRequires:	libtommath-devel
 BuildRequires:	sed >= 4.0
@@ -25,6 +26,7 @@ być pogwałceniem DMCA.
 
 %prep
 %setup -q -c
+%patch0 -p1
 
 sed -i -e 's/gcc -o clit.*/$(CC) -o clit $^ -ltommath/' %{name}%{xver}/Makefile
 
@@ -48,4 +50,4 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/clit
