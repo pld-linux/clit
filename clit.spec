@@ -26,7 +26,7 @@ być pogwałceniem DMCA.
 
 %prep
 %setup -q -c
-%patch0 -p1
+%patch -P0 -p1
 
 sed -i -e 's/gcc -o clit.*/$(CC) -o clit $^ -ltommath/' %{name}%{xver}/Makefile
 
