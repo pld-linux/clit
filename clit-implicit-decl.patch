@@ -1,0 +1,85 @@
+--- clit-1.8/lib/newlzx/lzxglue.c.orig
++++ clit-1.8/lib/newlzx/lzxglue.c
+@@ -28,6 +28,7 @@
+  */
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include "litlib.h"
+ #include "mspack.h"
+ #include "lzx.h"
+--- clit-1.8/lib/newlzx/lzx.h.orig
++++ clit-1.8/lib/newlzx/lzx.h
+@@ -166,4 +166,10 @@
+  */
+ void lzxd_free(struct lzxd_stream *lzx);
+ 
++/* glue wrappers implemented in lzxglue.c */
++extern int LZXinit(int window);
++extern void LZXreset(void);
++extern int LZXdecompress(unsigned char *inbuf, unsigned char *outbuf,
++    unsigned int inlen, unsigned int outlen);
++
+ #endif
+--- clit-1.8/clit18/display.c.orig
++++ clit-1.8/clit18/display.c
+@@ -22,6 +22,7 @@
+ */
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include "litlib.h"
+ 
+ extern void hexdump( unsigned char * ptr, int size );
+--- clit-1.8/clit18/transmute.c.orig
++++ clit-1.8/clit18/transmute.c
+@@ -22,6 +22,7 @@
+ */
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include "litlib.h"
+ 
+ extern char * writingFilename;
+--- clit-1.8/clit18/hexdump.c.orig
++++ clit-1.8/clit18/hexdump.c
+@@ -16,6 +16,7 @@
+ #include <ctype.h>
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ 
+ typedef unsigned char byte;
+ 
+--- clit-1.8/clit18/manifest.c.orig
++++ clit-1.8/clit18/manifest.c
+@@ -23,6 +23,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include "litlib.h"
+ #include "manifest.h"
+ #include "utils.h"
+--- clit-1.8/clit18/explode.c.orig
++++ clit-1.8/clit18/explode.c
+@@ -33,6 +33,9 @@
+ #include <direct.h>
+ #define mkdir(x,y) _mkdir(x)
+ #define strncasecmp _strnicmp
++#else
++#include <sys/stat.h>
++#include <sys/types.h>
+ #endif
+ 
+ /*
+--- clit-1.8/clit18/drm5.c.orig
++++ clit-1.8/clit18/drm5.c
+@@ -31,6 +31,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <assert.h>
++#include <ctype.h>
+ #include "litlib.h"
+ #include "utils.h"
+ #include "d3des.h"

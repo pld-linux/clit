@@ -3,13 +3,14 @@ Summary:	Open Convert-.LIT tool
 Summary(pl.UTF-8):	Otwarte narzędzie do rozpakowywania plików .LIT
 Name:		clit
 Version:	1.8
-Release:	4
+Release:	5
 License:	GPL v2+
 Group:		Applications/Archiving
-Source0:	http://www.kyz.uklinux.net/downloads/open_c-lit-%{version}.tar.gz
+Source0:	https://www.kyzer.me.uk/pack/convlit/open_c-lit-%{version}.tar.gz
 # Source0-md5:	d8c599cf0e3cd8bab08e455e51ef852d
 Patch0:		%{name}-format.patch
-URL:		http://www.kyz.uklinux.net/convlit.php
+Patch1:		%{name}-implicit-decl.patch
+URL:		https://www.kyzer.me.uk/pack/convlit/
 BuildRequires:	libtommath-devel
 BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -27,16 +28,17 @@ być pogwałceniem DMCA.
 %prep
 %setup -q -c
 %patch -P0 -p1
+%patch -P1 -p1
 
 sed -i -e 's/gcc -o clit.*/$(CC) -o clit $^ -ltommath/' %{name}%{xver}/Makefile
 
 %build
 %{__make} -C lib \
 	CC="%{__cc}" \
-	CFLAGS="%{rpmcflags} -Wall -Ides -Isha -Inewlzx -I."
+	CFLAGS="%{rpmcflags} %{rpmcppflags} -Wall -Ides -Isha -Inewlzx -I."
 %{__make} -C %{name}%{xver} \
 	CC="%{__cc}" \
-	CFLAGS="%{rpmcflags} -funsigned-char -Wall -I../lib -I../lib/des -I."
+	CFLAGS="%{rpmcflags} %{rpmcppflags} -funsigned-char -Wall -I../lib -I../lib/des -I."
 
 %install
 rm -rf $RPM_BUILD_ROOT
